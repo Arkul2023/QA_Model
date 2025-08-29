@@ -2,98 +2,101 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>QA Application</title>
+    <title>Question Answering App</title>
     <style>
-        /* General page styling */
         body {
             font-family: Arial, sans-serif;
-            background-color: white;
-            margin: 30px;
+            background-color: lavender;
+            margin: 0;
+            padding: 0;
         }
 
-        /* Main heading */
+        .container {
+            width: 800px;
+            margin: 40px auto;
+            padding: 30px;
+            background-color: white;
+            border: 2px solid lightgray;
+            border-radius: 10px;
+            box-shadow: 2px 2px 8px gray;
+        }
+
         h1 {
             text-align: center;
             color: darkblue;
-            margin-bottom: 20px;
         }
 
-        /* Form container */
-        .qa-box {
-            background-color: lightgrey;
-            padding: 20px;
-            border-radius: 12px;
-            width: 700px;
-            margin: 0 auto;
-        }
-
-        /* Labels for inputs */
         label {
             font-weight: bold;
-            color: black;
             display: block;
-            margin-top: 15px;
+            margin-top: 20px;
             margin-bottom: 5px;
         }
 
-        /* Input fields and textarea */
-        input[type="text"], textarea {
+        textarea, input[type="text"] {
             width: 100%;
-            padding: 10px;
-            border: 1px solid grey;
-            border-radius: 8px;
-            font-size: 15px;
+            padding: 12px;
+            border: 1px solid gray;
+            border-radius: 6px;
+            font-size: 16px;
         }
 
-        /* Button styling */
+        textarea {
+            height: 150px;
+            resize: none;
+        }
+
         button {
+            display: block;
+            width: 100%;
+            margin-top: 25px;
+            padding: 12px;
             background-color: darkblue;
             color: white;
+            font-size: 18px;
             border: none;
-            padding: 12px 20px;
-            margin-top: 20px;
-            font-size: 16px;
-            font-weight: bold;
-            border-radius: 10px;
+            border-radius: 6px;
             cursor: pointer;
         }
 
-        /* Button hover effect */
         button:hover {
             background-color: navy;
         }
 
-        /* Answer box */
         .answer-box {
-            background-color: white;
-            border: 1px solid grey;
-            border-radius: 10px;
+            margin-top: 25px;
             padding: 15px;
-            margin-top: 20px;
-            font-style: italic;
-            color: darkgreen;
+            background-color: aliceblue;
+            border: 1px solid lightgray;
+            border-radius: 6px;
+            font-size: 16px;
+            color: darkslategray;
         }
     </style>
 </head>
 <body>
-    <!-- Main heading -->
-    <h1>Simple Question Answer App</h1>
+    <div class="container">
+        <h1>Question Answering App</h1>
 
-    <!-- Question input box -->
-    <div class="qa-box">
-        <form>
-            <!-- Question input -->
-            <label for="question">Type your question:</label>
-            <input type="text" id="question" name="question" placeholder="Write your question here...">
+        <form method="post" action="/predict">
+            <!-- Paragraph Input -->
+            <label for="paragraph">Enter Paragraph</label>
+            <textarea id="paragraph" name="paragraph" placeholder="Paste your text here..."></textarea>
 
-            <!-- Submit button -->
+            <!-- Question Input -->
+            <label for="question">Enter Your Question</label>
+            <input type="text" id="question" name="question" placeholder="Type your question here...">
+
+            <!-- Submit Button -->
             <button type="submit">Get Answer</button>
         </form>
 
-        <!-- Display answer -->
+        <!-- Answer Display -->
+        {% if answer %}
         <div class="answer-box">
-            <p>Your answer will appear here...</p>
+            <strong>Answer:</strong> {{ answer }}
         </div>
+        {% endif %}
     </div>
 </body>
 </html>
