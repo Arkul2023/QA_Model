@@ -2,57 +2,98 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Question Answering Model</title>
+    <title>QA Application</title>
     <style>
+        /* General page styling */
         body {
             font-family: Arial, sans-serif;
-            margin: 40px;
+            background-color: white;
+            margin: 30px;
+        }
+
+        /* Main heading */
+        h1 {
             text-align: center;
+            color: darkblue;
+            margin-bottom: 20px;
         }
-        textarea {
-            width: 80%;
-            height: 100px;
-            margin-bottom: 10px;
+
+        /* Form container */
+        .qa-box {
+            background-color: lightgrey;
+            padding: 20px;
+            border-radius: 12px;
+            width: 700px;
+            margin: 0 auto;
         }
-        input {
-            width: 80%;
+
+        /* Labels for inputs */
+        label {
+            font-weight: bold;
+            color: black;
+            display: block;
+            margin-top: 15px;
+            margin-bottom: 5px;
+        }
+
+        /* Input fields and textarea */
+        input[type="text"], textarea {
+            width: 100%;
             padding: 10px;
-            margin-bottom: 10px;
+            border: 1px solid grey;
+            border-radius: 8px;
+            font-size: 15px;
         }
+
+        /* Button styling */
         button {
-            padding: 10px 20px;
+            background-color: darkblue;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            margin-top: 20px;
             font-size: 16px;
+            font-weight: bold;
+            border-radius: 10px;
             cursor: pointer;
         }
+
+        /* Button hover effect */
+        button:hover {
+            background-color: navy;
+        }
+
+        /* Answer box */
         .answer-box {
+            background-color: white;
+            border: 1px solid grey;
+            border-radius: 10px;
+            padding: 15px;
             margin-top: 20px;
-            padding: 10px;
-            border: 1px solid #ccc;
-            display: inline-block;
+            font-style: italic;
+            color: darkgreen;
         }
     </style>
 </head>
 <body>
+    <!-- Main heading -->
+    <h1>Simple Question Answer App</h1>
 
-    <h2>AI Question Answering Model</h2>
-    
-    <form action="/qa" method="post">
-        <label for="context"><b>Enter Context (Passage):</b></label><br>
-        <textarea name="context" required></textarea><br>
+    <!-- Question input box -->
+    <div class="qa-box">
+        <form>
+            <!-- Question input -->
+            <label for="question">Type your question:</label>
+            <input type="text" id="question" name="question" placeholder="Write your question here...">
 
-        <label for="question"><b>Enter Question:</b></label><br>
-        <input type="text" name="question" required><br>
+            <!-- Submit button -->
+            <button type="submit">Get Answer</button>
+        </form>
 
-        <button type="submit">Get Answer</button>
-    </form>
-
-    {% if answer %}
+        <!-- Display answer -->
         <div class="answer-box">
-            <h3>Answer:</h3>
-            <p>{{ answer }}</p>
+            <p>Your answer will appear here...</p>
         </div>
-    {% endif %}
-
+    </div>
 </body>
 </html>
