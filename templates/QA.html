@@ -78,7 +78,7 @@
     <div class="container">
         <h1>Question Answering App</h1>
 
-        <form method="post" action="/predict">
+        <form method="post" action="/qa">
             <!-- Paragraph Input -->
             <label for="paragraph">Enter Paragraph</label>
             <textarea id="paragraph" name="paragraph" placeholder="Paste your text here..."></textarea>
@@ -92,9 +92,12 @@
         </form>
         
         <!-- Display answer -->
-        <div class="answer-box">
-            <p>Your answer will appear here...</p>
+        {% if answer %}
+        <div class="answer-box" style="margin-top:20px; padding:10px; border:1px solid #ccc; border-radius:5px;">
+            <h3>Answer:</h3>
+            <p>{{ answer }}</p>
         </div>
+        {% endif %}
     </div>
 </body>
 </html>
