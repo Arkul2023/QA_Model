@@ -1,103 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Question Answering App</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: lavender;
-            margin: 0;
-            padding: 0;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Question Answering App</title>
+  <style>
+    body {
+      font-family: "Segoe UI", Arial, sans-serif;
+      margin: 40px;
+      text-align: center;
+      background: lavender;
+      color: midnightblue;
+    }
 
-        .container {
-            width: 800px;
-            margin: 40px auto;
-            padding: 30px;
-            background-color: white;
-            border: 2px solid lightgray;
-            border-radius: 10px;
-            box-shadow: 2px 2px 8px gray;
-        }
+    h2 {
+      color: darkslateblue;
+    }
 
-        h1 {
-            text-align: center;
-            color: darkblue;
-        }
+    textarea {
+      width: 80%;
+      height: 120px;
+      margin-bottom: 15px;
+      padding: 12px;
+      border-radius: 10px;
+      border: 2px solid slategray;
+      background: white;
+      font-size: 15px;
+    }
 
-        label {
-            font-weight: bold;
-            display: block;
-            margin-top: 20px;
-            margin-bottom: 5px;
-        }
+    input {
+      width: 80%;
+      padding: 12px;
+      margin-bottom: 15px;
+      border-radius: 10px;
+      border: 2px solid slategray;
+      background: white;
+      font-size: 15px;
+    }
 
-        textarea, input[type="text"] {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid gray;
-            border-radius: 6px;
-            font-size: 16px;
-        }
+    button {
+      padding: 12px 24px;
+      font-size: 16px;
+      cursor: pointer;
+      border: none;
+      border-radius: 10px;
+      background-color: steelblue;
+      color: white;
+      transition: background-color 0.3s ease;
+    }
 
-        textarea {
-            height: 150px;
-            resize: none;
-        }
+    button:hover {
+      background-color: dodgerblue;
+    }
 
-        button {
-            display: block;
-            width: 100%;
-            margin-top: 25px;
-            padding: 12px;
-            background-color: darkblue;
-            color: white;
-            font-size: 18px;
-            border: none;
-            border-radius: 6px;
-            cursor: pointer;
-        }
+    .answer-box {
+      margin-top: 20px;
+      padding: 15px;
+      border: 2px solid gray;
+      background: whitesmoke;
+      border-radius: 10px;
+      display: inline-block;
+      text-align: left;
+      max-width: 70%;
+    }
 
-        button:hover {
-            background-color: navy;
-        }
-
-        .answer-box {
-            margin-top: 25px;
-            padding: 15px;
-            background-color: aliceblue;
-            border: 1px solid lightgray;
-            border-radius: 6px;
-            font-size: 16px;
-            color: darkslategray;
-        }
-    </style>
+    .answer-box h3 {
+      margin-top: 0;
+      color: darkgreen;
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Question Answering App</h1>
+  <h2>AI Question Answering App</h2>
+  <form action="/qa" method="post">
+    <label for="context"><b>Enter Context (Passage):</b></label><br>
+    <textarea name="context" required></textarea><br>
+    <label for="question"><b>Enter Question:</b></label><br>
+    <input type="text" name="question" required><br>
+    <button type="submit">Get Answer</button>
+  </form>
 
-        <form method="post" action="/qa">
-            <!-- Paragraph Input -->
-            <label for="paragraph">Enter Paragraph</label>
-            <textarea id="paragraph" name="paragraph" placeholder="Paste your text here..."></textarea>
-
-            <!-- Question Input -->
-            <label for="question">Enter Your Question</label>
-            <input type="text" id="question" name="question" placeholder="Type your question here...">
-
-            <!-- Submit Button -->
-            <button type="submit">Get Answer</button>
-        </form>
-        
-        <!-- Display answer -->
-        {% if answer %}
-        <div class="answer-box" style="margin-top:20px; padding:10px; border:1px solid lightgray; border-radius:5px;">
-            <h3>Answer:</h3>
-            <p>{{ answer }}</p>
-        </div>
-        {% endif %}
-    </div>
+  {% if answer %}
+  <div class="answer-box">
+    <h3>Answer:</h3>
+    <p>{{ answer }}</p>
+  </div>
+  {% endif %}
 </body>
 </html>
